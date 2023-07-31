@@ -7,20 +7,19 @@
 #include <filesystem>
 
 std::string path;
-std::string wide_to_narrow(const std::wstring& wide_string)
-{
+std::string wide_to_narrow(const std::wstring& wide_string) {
     int len = WideCharToMultiByte(CP_UTF8, 0, wide_string.c_str(), -1, NULL, 0, NULL, NULL);
     std::string narrow_string(len, 0);
     WideCharToMultiByte(CP_UTF8, 0, wide_string.c_str(), -1, &narrow_string[0], len, NULL, NULL);
     return narrow_string;
 }
 
+/* Stolen code, don't I need to close the file???? */
 bool file_exists(const std::string& filename) {
     std::ifstream ifile(filename);
     return ifile.good();
 }
 
-/* Goofy ah ChatGPT code */
 void edit_settings(){
     std::string filename = path + "Config\\GFX.ini";
     std::ifstream infile( filename );
@@ -41,10 +40,8 @@ void edit_settings(){
     infile.close();
     outfile.close();
     
-    if(std::remove(filename.c_str()) != 0) {
-        std::perror("Error removing settings file");
-        return;
-    }
+    std::remove(filename.c_str());
+
     if(std::rename("temp", filename.c_str()) != 0) {
         std::perror("Error replacing settings file");
         return;
@@ -85,8 +82,8 @@ void edit_controls(){
     std::ofstream current_settings("current_temp");
     std::ofstream profile_settings("profile_temp");
 
-    current_settings << "[GCPad1]\n" << controls_content;
-    profile_settings << "[Profile]\n" <<controls_content;
+    current_settings << "[GCPad1]\n"  << controls_content;
+    profile_settings << "[Profile]\n" << controls_content;
 
     current_settings.close();
     profile_settings.close();
