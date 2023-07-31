@@ -6,9 +6,7 @@
 #include <string>
 #include <filesystem>
 
-const GUID FOLDERID_RoamingAppData = {0x3EB685DB, 0x65F9, 0x4CF6, {0xA0, 0x3A, 0xE3, 0xEF, 0x65, 0x72, 0x9F, 0x3D}};
 std::string path;
-
 std::string wide_to_narrow(const std::wstring& wide_string)
 {
     int len = WideCharToMultiByte(CP_UTF8, 0, wide_string.c_str(), -1, NULL, 0, NULL, NULL);

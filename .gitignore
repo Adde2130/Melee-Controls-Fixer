@@ -2,4 +2,6 @@
 !/source/main.cpp
 !README.md
 !makefile
+!libgcc_s_seh-1.dll
+!libstdc++-6.dll
 !.gitignore
