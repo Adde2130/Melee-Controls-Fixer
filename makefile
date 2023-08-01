@@ -25,9 +25,9 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-#HAHAHAHH WHAT??? CHATGPT CODE 
-package: $(TARGET)
-	powershell Compress-Archive -Path $(TARGET).exe, libgcc_s_seh-1.dll, libstdc++-6.dll -DestinationPath $(TARGET).zip
+# #HAHAHAHH WHAT??? CHATGPT CODE 
+# package: $(TARGET)
+# 	powershell Compress-Archive -Path $(TARGET).exe, libgcc_s_seh-1.dll, libstdc++-6.dll -DestinationPath $(TARGET).zip
 
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)
