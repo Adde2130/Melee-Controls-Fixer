@@ -123,7 +123,7 @@ void edit_gecko(){
     }
 }
 
-int main(){
+int main() {
     path = getenv("appdata"); // C:\Users\User\AppData\Roaming
     path += "\\Slippi Launcher\\netplay\\User\\";
     
